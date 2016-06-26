@@ -225,16 +225,6 @@ namespace Calculator.Forms.GPA
             GPAlab.Text = GpaHelper.CaulculateGpa(_lGpa, GpaHelper.UnitSumation(_lGpa)).ToString();
             GPAlab.Visible = true;
         }
-
-        private void CalculationbyC(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void GpaNameLab_Click(object sender, EventArgs e)
-        {
-
-        }
     }
  
 }

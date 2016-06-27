@@ -27,9 +27,9 @@ namespace Calculator.Forms.GPA
         {
             DropDawnBind();
             toolTip1.SetToolTip(editGpImg, "Edit Gpa Calculater Name");
-            toolTip1.SetToolTip(removeGpImg, "Delete Gpa Calculater Name");
+            toolTip1.SetToolTip(removeGpImg, "Delete Gpa Calculater");
             toolTip1.SetToolTip(DiscardImg, "Discard");
-            toolTip1.SetToolTip(DeletetImg, "Delete the Degree with it Value");
+            toolTip1.SetToolTip(DeletetImg, "Delete Degree");
         }
 
         private void GPAcomboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,7 +61,10 @@ namespace Calculator.Forms.GPA
 
             if (_gpaItem != null) Gpa_NameTXT.Text = _gpaItem.Name;
 
-            var grades = _db.Grades.Where(item => item.GpaId == _gpaItem.Id).Select(val => new Grades { Name = val.Name, Value = val.Value, Id = val.Id }).ToList();
+            var grades = _db.Grades.Where(item => item.GpaId == _gpaItem.Id)
+                        .Select(val => new Grades { Name = val.Name, Value = val.Value, Id = val.Id })
+                        .OrderByDescending(item1 => item1.Value)
+                        .ToList();
 
             Bind(grades);
         }
@@ -169,7 +172,7 @@ namespace Calculator.Forms.GPA
                 }
                 #endregion
                 _db.SaveChanges();
-                var dataGrid = _db.Grades.Where(item => item.GpaId == _selectedGpaValue).ToList();
+                var dataGrid = _db.Grades.Where(item => item.GpaId == _selectedGpaValue).OrderByDescending(item => item.Value).ToList();
                 Bind(dataGrid);
                 DegreeTxT.Text = "";
                 ValueTxT.Text = "";
@@ -248,6 +251,7 @@ namespace Calculator.Forms.GPA
             _db.SaveChanges();
             DropDawnBind();
             Gpa_NameTXT.Text = "";
+            editGpImg.Visible = false;
         }
 
         private void Gpa_NameTXT_TextChanged(object sender, EventArgs e)

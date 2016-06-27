@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using Calculator.Properties;
 
@@ -36,18 +37,20 @@ namespace Calculator.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Welcome));
             this.UserNametxt = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.Datelab = new System.Windows.Forms.Label();
             this.facebookimg = new System.Windows.Forms.PictureBox();
             this.Githubimg = new System.Windows.Forms.PictureBox();
             this.GPA_Calc = new System.Windows.Forms.PictureBox();
             this.OptionImg = new System.Windows.Forms.PictureBox();
             this.ColorPiker = new System.Windows.Forms.PictureBox();
+            this.fontImg = new System.Windows.Forms.PictureBox();
+            this.GpaName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.facebookimg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Githubimg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GPA_Calc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OptionImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ColorPiker)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fontImg)).BeginInit();
             this.SuspendLayout();
             // 
             // UserNametxt
@@ -61,23 +64,14 @@ namespace Calculator.Forms
             this.UserNametxt.TabIndex = 6;
             this.UserNametxt.Text = "UserName";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SketchFlow Print", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(7, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 29);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "GPA";
-            // 
             // Datelab
             // 
             this.Datelab.AutoSize = true;
-            this.Datelab.Location = new System.Drawing.Point(9, 377);
+            this.Datelab.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Datelab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.Datelab.Location = new System.Drawing.Point(12, 384);
             this.Datelab.Name = "Datelab";
-            this.Datelab.Size = new System.Drawing.Size(44, 13);
+            this.Datelab.Size = new System.Drawing.Size(42, 14);
             this.Datelab.TabIndex = 19;
             this.Datelab.Text = "Datelab";
             // 
@@ -85,23 +79,25 @@ namespace Calculator.Forms
             // 
             this.facebookimg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.facebookimg.Image = global::Calculator.Properties.Resources.facebook;
-            this.facebookimg.Location = new System.Drawing.Point(232, 362);
+            this.facebookimg.Location = new System.Drawing.Point(265, 371);
             this.facebookimg.Name = "facebookimg";
             this.facebookimg.Size = new System.Drawing.Size(32, 34);
             this.facebookimg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.facebookimg.TabIndex = 22;
             this.facebookimg.TabStop = false;
+            this.facebookimg.Click += new System.EventHandler(this.facebookimg_Click);
             // 
             // Githubimg
             // 
             this.Githubimg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Githubimg.Image = global::Calculator.Properties.Resources.github;
-            this.Githubimg.Location = new System.Drawing.Point(197, 362);
+            this.Githubimg.Location = new System.Drawing.Point(230, 371);
             this.Githubimg.Name = "Githubimg";
             this.Githubimg.Size = new System.Drawing.Size(32, 34);
             this.Githubimg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Githubimg.TabIndex = 21;
             this.Githubimg.TabStop = false;
+            this.Githubimg.Click += new System.EventHandler(this.Githubimg_Click);
             // 
             // GPA_Calc
             // 
@@ -119,7 +115,7 @@ namespace Calculator.Forms
             // 
             this.OptionImg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.OptionImg.Image = global::Calculator.Properties.Resources.Setting;
-            this.OptionImg.Location = new System.Drawing.Point(220, 196);
+            this.OptionImg.Location = new System.Drawing.Point(262, 210);
             this.OptionImg.Name = "OptionImg";
             this.OptionImg.Size = new System.Drawing.Size(32, 34);
             this.OptionImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -131,7 +127,7 @@ namespace Calculator.Forms
             // 
             this.ColorPiker.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ColorPiker.Image = global::Calculator.Properties.Resources.stocktoolcolorpicker;
-            this.ColorPiker.Location = new System.Drawing.Point(220, 143);
+            this.ColorPiker.Location = new System.Drawing.Point(262, 130);
             this.ColorPiker.Name = "ColorPiker";
             this.ColorPiker.Size = new System.Drawing.Size(32, 34);
             this.ColorPiker.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -139,22 +135,46 @@ namespace Calculator.Forms
             this.ColorPiker.TabStop = false;
             this.ColorPiker.Click += new System.EventHandler(this.ColorPiker_Click);
             // 
+            // fontImg
+            // 
+            this.fontImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.fontImg.Image = global::Calculator.Properties.Resources.Edit;
+            this.fontImg.Location = new System.Drawing.Point(262, 170);
+            this.fontImg.Name = "fontImg";
+            this.fontImg.Size = new System.Drawing.Size(32, 34);
+            this.fontImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.fontImg.TabIndex = 23;
+            this.fontImg.TabStop = false;
+            this.fontImg.Click += new System.EventHandler(this.fontImg_Click);
+            // 
+            // GpaName
+            // 
+            this.GpaName.AutoSize = true;
+            this.GpaName.Font = new System.Drawing.Font("SketchFlow Print", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GpaName.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.GpaName.Location = new System.Drawing.Point(95, 9);
+            this.GpaName.Name = "GpaName";
+            this.GpaName.Size = new System.Drawing.Size(88, 37);
+            this.GpaName.TabIndex = 24;
+            this.GpaName.Text = "Gpa";
+            // 
             // Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::Calculator.Properties.Settings.Default.BgColorSet;
-            this.ClientSize = new System.Drawing.Size(264, 408);
+            this.ClientSize = new System.Drawing.Size(297, 411);
+            this.Controls.Add(this.GpaName);
+            this.Controls.Add(this.fontImg);
             this.Controls.Add(this.facebookimg);
             this.Controls.Add(this.Githubimg);
             this.Controls.Add(this.GPA_Calc);
             this.Controls.Add(this.Datelab);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.OptionImg);
             this.Controls.Add(this.ColorPiker);
             this.Controls.Add(this.UserNametxt);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(280, 447);
+            this.MaximumSize = new System.Drawing.Size(313, 450);
             this.MinimumSize = new System.Drawing.Size(280, 447);
             this.Name = "Welcome";
             this.Text = "Welcome";
@@ -164,6 +184,7 @@ namespace Calculator.Forms
             ((System.ComponentModel.ISupportInitialize)(this.GPA_Calc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OptionImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ColorPiker)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fontImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,10 +195,11 @@ namespace Calculator.Forms
         private PictureBox ColorPiker;
         private PictureBox OptionImg;
         private ToolTip toolTip;
-        private Label label1;
         private Label Datelab;
         private PictureBox GPA_Calc;
         private PictureBox Githubimg;
         private PictureBox facebookimg;
+        private PictureBox fontImg;
+        private Label GpaName;
     }
 }

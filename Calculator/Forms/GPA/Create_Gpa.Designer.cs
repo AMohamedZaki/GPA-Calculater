@@ -46,7 +46,7 @@ namespace Calculator.Forms.GPA
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.DoneMessageLab = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DegreedataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -158,7 +158,7 @@ namespace Calculator.Forms.GPA
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.DoneMessageLab);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(99, 348);
             this.panel1.Name = "panel1";
@@ -166,15 +166,16 @@ namespace Calculator.Forms.GPA
             this.panel1.TabIndex = 19;
             this.panel1.Visible = false;
             // 
-            // label1
+            // DoneMessageLab
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 17);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Done your GPA has been Created \r\n";
+            this.DoneMessageLab.AutoSize = true;
+            this.DoneMessageLab.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DoneMessageLab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.DoneMessageLab.Location = new System.Drawing.Point(39, 23);
+            this.DoneMessageLab.Name = "DoneMessageLab";
+            this.DoneMessageLab.Size = new System.Drawing.Size(217, 17);
+            this.DoneMessageLab.TabIndex = 19;
+            this.DoneMessageLab.Text = "Done your GPA has been Created \r\n";
             // 
             // CreateGpa
             // 
@@ -219,6 +220,6 @@ namespace Calculator.Forms.GPA
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label DoneMessageLab;
     }
 }

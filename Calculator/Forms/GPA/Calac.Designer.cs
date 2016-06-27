@@ -41,20 +41,40 @@ namespace Calculator.Forms.GPA
             this.btnCalculate = new System.Windows.Forms.Button();
             this.CB_Degree = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.TotalUnits = new System.Windows.Forms.Label();
-            this.UnitSumation = new System.Windows.Forms.Label();
-            this.UnitIDlab = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.GPAlab = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.GpaNameLab = new System.Windows.Forms.Label();
             this.UnitTBox = new System.Windows.Forms.TextBox();
             this.LabNumberofUnit = new System.Windows.Forms.Label();
             this.DeletetImg = new System.Windows.Forms.PictureBox();
             this.DiscardImg = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CalculateTotalbtn = new System.Windows.Forms.Button();
+            this.UnitbeforeTxT = new System.Windows.Forms.TextBox();
+            this.uBeforeLab = new System.Windows.Forms.Label();
+            this.GPA_TxT = new System.Windows.Forms.TextBox();
+            this.GPABeforeLab = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.TotalGPALab = new System.Windows.Forms.Label();
+            this.TotalUnitLab = new System.Windows.Forms.Label();
+            this.GPAbeforLab = new System.Windows.Forms.Label();
+            this.UnitBeforeLab = new System.Windows.Forms.Label();
+            this.GPAlab = new System.Windows.Forms.Label();
+            this.UnitSumation = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.line5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.line4 = new System.Windows.Forms.Label();
+            this.line3 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.line2 = new System.Windows.Forms.Label();
+            this.line1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeletetImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscardImg)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // labDegree
@@ -112,7 +132,7 @@ namespace Calculator.Forms.GPA
             this.dataGridView1.BackgroundColor = global::Calculator.Properties.Settings.Default.BgColorSet;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 176);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 186);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -130,71 +150,16 @@ namespace Calculator.Forms.GPA
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridView1_RowsRemoved);
             // 
-            // TotalUnits
-            // 
-            this.TotalUnits.AutoSize = true;
-            this.TotalUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalUnits.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
-            this.TotalUnits.Location = new System.Drawing.Point(364, 196);
-            this.TotalUnits.Name = "TotalUnits";
-            this.TotalUnits.Size = new System.Drawing.Size(77, 13);
-            this.TotalUnits.TabIndex = 9;
-            this.TotalUnits.Text = "TotalUnits : ";
-            // 
-            // UnitSumation
-            // 
-            this.UnitSumation.AutoSize = true;
-            this.UnitSumation.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
-            this.UnitSumation.Location = new System.Drawing.Point(438, 196);
-            this.UnitSumation.Name = "UnitSumation";
-            this.UnitSumation.Size = new System.Drawing.Size(70, 13);
-            this.UnitSumation.TabIndex = 10;
-            this.UnitSumation.Text = "UnitSumation";
-            this.UnitSumation.Visible = false;
-            // 
-            // UnitIDlab
-            // 
-            this.UnitIDlab.AutoSize = true;
-            this.UnitIDlab.Location = new System.Drawing.Point(7, 452);
-            this.UnitIDlab.Name = "UnitIDlab";
-            this.UnitIDlab.Size = new System.Drawing.Size(37, 13);
-            this.UnitIDlab.TabIndex = 11;
-            this.UnitIDlab.Text = "UnitID";
-            this.UnitIDlab.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
-            this.label1.Location = new System.Drawing.Point(364, 223);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Your GPA  :";
-            // 
-            // GPAlab
-            // 
-            this.GPAlab.AutoSize = true;
-            this.GPAlab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
-            this.GPAlab.Location = new System.Drawing.Point(438, 223);
-            this.GPAlab.Name = "GPAlab";
-            this.GPAlab.Size = new System.Drawing.Size(43, 13);
-            this.GPAlab.TabIndex = 13;
-            this.GPAlab.Text = "GPAlab";
-            this.GPAlab.Visible = false;
-            // 
             // GpaNameLab
             // 
             this.GpaNameLab.AutoSize = true;
             this.GpaNameLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GpaNameLab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
-            this.GpaNameLab.Location = new System.Drawing.Point(182, 21);
+            this.GpaNameLab.Location = new System.Drawing.Point(228, 16);
             this.GpaNameLab.Name = "GpaNameLab";
             this.GpaNameLab.Size = new System.Drawing.Size(79, 17);
             this.GpaNameLab.TabIndex = 17;
             this.GpaNameLab.Text = "GpaName";
-            this.GpaNameLab.Click += new System.EventHandler(this.GpaNameLab_Click);
             // 
             // UnitTBox
             // 
@@ -241,20 +206,268 @@ namespace Calculator.Forms.GPA
             this.DiscardImg.Visible = false;
             this.DiscardImg.Click += new System.EventHandler(this.DiscardImg_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.CalculateTotalbtn);
+            this.panel1.Controls.Add(this.UnitbeforeTxT);
+            this.panel1.Controls.Add(this.uBeforeLab);
+            this.panel1.Controls.Add(this.GPA_TxT);
+            this.panel1.Controls.Add(this.GPABeforeLab);
+            this.panel1.Location = new System.Drawing.Point(6, 450);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(290, 168);
+            this.panel1.TabIndex = 18;
+            // 
+            // CalculateTotalbtn
+            // 
+            this.CalculateTotalbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(166)))), ((int)(((byte)(255)))));
+            this.CalculateTotalbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CalculateTotalbtn.Location = new System.Drawing.Point(77, 79);
+            this.CalculateTotalbtn.Name = "CalculateTotalbtn";
+            this.CalculateTotalbtn.Size = new System.Drawing.Size(143, 43);
+            this.CalculateTotalbtn.TabIndex = 4;
+            this.CalculateTotalbtn.Text = "Calculate Total";
+            this.CalculateTotalbtn.UseVisualStyleBackColor = false;
+            this.CalculateTotalbtn.Click += new System.EventHandler(this.CalculateTotalbtn_Click);
+            // 
+            // UnitbeforeTxT
+            // 
+            this.UnitbeforeTxT.Location = new System.Drawing.Point(77, 43);
+            this.UnitbeforeTxT.Name = "UnitbeforeTxT";
+            this.UnitbeforeTxT.Size = new System.Drawing.Size(143, 20);
+            this.UnitbeforeTxT.TabIndex = 3;
+            this.UnitbeforeTxT.TextChanged += new System.EventHandler(this.UnitbeforeTxT_TextChanged);
+            // 
+            // uBeforeLab
+            // 
+            this.uBeforeLab.AutoSize = true;
+            this.uBeforeLab.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uBeforeLab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.uBeforeLab.Location = new System.Drawing.Point(5, 46);
+            this.uBeforeLab.Name = "uBeforeLab";
+            this.uBeforeLab.Size = new System.Drawing.Size(76, 15);
+            this.uBeforeLab.TabIndex = 2;
+            this.uBeforeLab.Text = "Unit before : ";
+            // 
+            // GPA_TxT
+            // 
+            this.GPA_TxT.Location = new System.Drawing.Point(77, 12);
+            this.GPA_TxT.Name = "GPA_TxT";
+            this.GPA_TxT.Size = new System.Drawing.Size(143, 20);
+            this.GPA_TxT.TabIndex = 1;
+            this.GPA_TxT.TextChanged += new System.EventHandler(this.GPA_TxT_TextChanged);
+            // 
+            // GPABeforeLab
+            // 
+            this.GPABeforeLab.AutoSize = true;
+            this.GPABeforeLab.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GPABeforeLab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.GPABeforeLab.Location = new System.Drawing.Point(5, 15);
+            this.GPABeforeLab.Name = "GPABeforeLab";
+            this.GPABeforeLab.Size = new System.Drawing.Size(75, 15);
+            this.GPABeforeLab.TabIndex = 0;
+            this.GPABeforeLab.Text = "GPA before : ";
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.TotalGPALab);
+            this.panel3.Controls.Add(this.TotalUnitLab);
+            this.panel3.Controls.Add(this.GPAbeforLab);
+            this.panel3.Controls.Add(this.UnitBeforeLab);
+            this.panel3.Controls.Add(this.GPAlab);
+            this.panel3.Controls.Add(this.UnitSumation);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.line5);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.line4);
+            this.panel3.Controls.Add(this.line3);
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.line2);
+            this.panel3.Controls.Add(this.line1);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Location = new System.Drawing.Point(302, 187);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(295, 196);
+            this.panel3.TabIndex = 25;
+            // 
+            // TotalGPALab
+            // 
+            this.TotalGPALab.AutoSize = true;
+            this.TotalGPALab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.TotalGPALab.Location = new System.Drawing.Point(248, 148);
+            this.TotalGPALab.Name = "TotalGPALab";
+            this.TotalGPALab.Size = new System.Drawing.Size(13, 13);
+            this.TotalGPALab.TabIndex = 35;
+            this.TotalGPALab.Text = "0";
+            // 
+            // TotalUnitLab
+            // 
+            this.TotalUnitLab.AutoSize = true;
+            this.TotalUnitLab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.TotalUnitLab.Location = new System.Drawing.Point(248, 82);
+            this.TotalUnitLab.Name = "TotalUnitLab";
+            this.TotalUnitLab.Size = new System.Drawing.Size(13, 13);
+            this.TotalUnitLab.TabIndex = 34;
+            this.TotalUnitLab.Text = "0";
+            // 
+            // GPAbeforLab
+            // 
+            this.GPAbeforLab.AutoSize = true;
+            this.GPAbeforLab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.GPAbeforLab.Location = new System.Drawing.Point(169, 148);
+            this.GPAbeforLab.Name = "GPAbeforLab";
+            this.GPAbeforLab.Size = new System.Drawing.Size(13, 13);
+            this.GPAbeforLab.TabIndex = 33;
+            this.GPAbeforLab.Text = "0";
+            // 
+            // UnitBeforeLab
+            // 
+            this.UnitBeforeLab.AutoSize = true;
+            this.UnitBeforeLab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.UnitBeforeLab.Location = new System.Drawing.Point(169, 82);
+            this.UnitBeforeLab.Name = "UnitBeforeLab";
+            this.UnitBeforeLab.Size = new System.Drawing.Size(13, 13);
+            this.UnitBeforeLab.TabIndex = 32;
+            this.UnitBeforeLab.Text = "0";
+            // 
+            // GPAlab
+            // 
+            this.GPAlab.AutoSize = true;
+            this.GPAlab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.GPAlab.Location = new System.Drawing.Point(81, 148);
+            this.GPAlab.Name = "GPAlab";
+            this.GPAlab.Size = new System.Drawing.Size(13, 13);
+            this.GPAlab.TabIndex = 31;
+            this.GPAlab.Text = "0";
+            // 
+            // UnitSumation
+            // 
+            this.UnitSumation.AutoSize = true;
+            this.UnitSumation.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.UnitSumation.Location = new System.Drawing.Point(79, 82);
+            this.UnitSumation.Name = "UnitSumation";
+            this.UnitSumation.Size = new System.Drawing.Size(13, 13);
+            this.UnitSumation.TabIndex = 30;
+            this.UnitSumation.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.label12.Location = new System.Drawing.Point(242, 22);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(34, 15);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "Total";
+            // 
+            // line5
+            // 
+            this.line5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.line5.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.line5.Location = new System.Drawing.Point(228, -2);
+            this.line5.Name = "line5";
+            this.line5.Size = new System.Drawing.Size(2, 196);
+            this.line5.TabIndex = 28;
+            this.line5.Text = "label9";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.label6.Location = new System.Drawing.Point(164, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 15);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Before";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.label5.Location = new System.Drawing.Point(66, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 15);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Semester";
+            // 
+            // line4
+            // 
+            this.line4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.line4.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.line4.Location = new System.Drawing.Point(140, -2);
+            this.line4.Name = "line4";
+            this.line4.Size = new System.Drawing.Size(2, 196);
+            this.line4.TabIndex = 25;
+            this.line4.Text = "label4";
+            // 
+            // line3
+            // 
+            this.line3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.line3.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.line3.Location = new System.Drawing.Point(49, 0);
+            this.line3.Name = "line3";
+            this.line3.Size = new System.Drawing.Size(2, 196);
+            this.line3.TabIndex = 24;
+            this.line3.Text = "label3";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.label11.Location = new System.Drawing.Point(3, 141);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(35, 17);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "GPA";
+            // 
+            // line2
+            // 
+            this.line2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.line2.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.line2.Location = new System.Drawing.Point(1, 120);
+            this.line2.Name = "line2";
+            this.line2.Size = new System.Drawing.Size(300, 2);
+            this.line2.TabIndex = 20;
+            this.line2.Text = "label10";
+            // 
+            // line1
+            // 
+            this.line1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.line1.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.line1.Location = new System.Drawing.Point(1, 56);
+            this.line1.Name = "line1";
+            this.line1.Size = new System.Drawing.Size(300, 2);
+            this.line1.TabIndex = 2;
+            this.line1.Text = "label8";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.label7.Location = new System.Drawing.Point(3, 78);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 17);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Uints";
+            // 
             // Calac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::Calculator.Properties.Settings.Default.BgColorSet;
-            this.ClientSize = new System.Drawing.Size(542, 472);
+            this.ClientSize = new System.Drawing.Size(613, 632);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.GpaNameLab);
             this.Controls.Add(this.DeletetImg);
             this.Controls.Add(this.DiscardImg);
-            this.Controls.Add(this.GPAlab);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.UnitIDlab);
-            this.Controls.Add(this.UnitSumation);
-            this.Controls.Add(this.TotalUnits);
             this.Controls.Add(this.UnitTBox);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.CB_Degree);
@@ -263,16 +476,18 @@ namespace Calculator.Forms.GPA
             this.Controls.Add(this.LabNumberofUnit);
             this.Controls.Add(this.labDegree);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(558, 511);
+            this.MaximumSize = new System.Drawing.Size(1000, 1000);
             this.MinimumSize = new System.Drawing.Size(558, 511);
             this.Name = "Calac";
             this.Text = "Calc";
             this.Load += new System.EventHandler(this.Calac_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CalculationbyC);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CalculationbyC);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeletetImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscardImg)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,17 +500,35 @@ namespace Calculator.Forms.GPA
         private Button btnCalculate;
         private ComboBox CB_Degree;
         private DataGridView dataGridView1;
-        private Label TotalUnits;
-        private Label UnitSumation;
-        private Label UnitIDlab;
-        private Label label1;
-        private Label GPAlab;
         private PictureBox DiscardImg;
         private PictureBox DeletetImg;
         private ToolTip toolTip1;
         private Label GpaNameLab;
         private TextBox UnitTBox;
         private Label LabNumberofUnit;
+        private Panel panel1;
+        private TextBox GPA_TxT;
+        private Label GPABeforeLab;
+        private TextBox UnitbeforeTxT;
+        private Label uBeforeLab;
+        private Button CalculateTotalbtn;
+        private Panel panel3;
+        private Label line3;
+        private Label label11;
+        private Label line2;
+        private Label line1;
+        private Label label7;
+        private Label GPAlab;
+        private Label UnitSumation;
+        private Label label12;
+        private Label line5;
+        private Label label6;
+        private Label label5;
+        private Label line4;
+        private Label TotalGPALab;
+        private Label TotalUnitLab;
+        private Label GPAbeforLab;
+        private Label UnitBeforeLab;
     }
 }
 

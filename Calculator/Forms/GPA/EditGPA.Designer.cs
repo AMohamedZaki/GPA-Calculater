@@ -49,11 +49,13 @@ namespace Calculator.Forms.GPA
             this.removeGpImg = new System.Windows.Forms.PictureBox();
             this.DeletetImg = new System.Windows.Forms.PictureBox();
             this.DiscardImg = new System.Windows.Forms.PictureBox();
+            this.BackImg = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.GradesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editGpImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.removeGpImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeletetImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscardImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BackImg)).BeginInit();
             this.SuspendLayout();
             // 
             // EditGpaLab
@@ -184,7 +186,7 @@ namespace Calculator.Forms.GPA
             // editGpImg
             // 
             this.editGpImg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.editGpImg.Image = global::Calculator.Properties.Resources.Eidt;
+            this.editGpImg.Image = global::Calculator.Properties.Resources.Eidt1;
             this.editGpImg.Location = new System.Drawing.Point(522, 118);
             this.editGpImg.Name = "editGpImg";
             this.editGpImg.Size = new System.Drawing.Size(23, 24);
@@ -197,7 +199,7 @@ namespace Calculator.Forms.GPA
             // removeGpImg
             // 
             this.removeGpImg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.removeGpImg.Image = global::Calculator.Properties.Resources.metro_icon;
+            this.removeGpImg.Image = ((System.Drawing.Image)(resources.GetObject("removeGpImg.Image")));
             this.removeGpImg.Location = new System.Drawing.Point(551, 118);
             this.removeGpImg.Name = "removeGpImg";
             this.removeGpImg.Size = new System.Drawing.Size(23, 24);
@@ -210,7 +212,7 @@ namespace Calculator.Forms.GPA
             // DeletetImg
             // 
             this.DeletetImg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DeletetImg.Image = global::Calculator.Properties.Resources.metro_icon;
+            this.DeletetImg.Image = ((System.Drawing.Image)(resources.GetObject("DeletetImg.Image")));
             this.DeletetImg.Location = new System.Drawing.Point(476, 288);
             this.DeletetImg.Name = "DeletetImg";
             this.DeletetImg.Size = new System.Drawing.Size(23, 24);
@@ -223,7 +225,7 @@ namespace Calculator.Forms.GPA
             // DiscardImg
             // 
             this.DiscardImg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DiscardImg.Image = global::Calculator.Properties.Resources.matticonssoftwareinstallerpurge1;
+            this.DiscardImg.Image = ((System.Drawing.Image)(resources.GetObject("DiscardImg.Image")));
             this.DiscardImg.Location = new System.Drawing.Point(445, 289);
             this.DiscardImg.Name = "DiscardImg";
             this.DiscardImg.Size = new System.Drawing.Size(23, 23);
@@ -233,12 +235,25 @@ namespace Calculator.Forms.GPA
             this.DiscardImg.Visible = false;
             this.DiscardImg.Click += new System.EventHandler(this.DiscardImg_Click);
             // 
+            // BackImg
+            // 
+            this.BackImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackImg.Image = global::Calculator.Properties.Resources.Exit;
+            this.BackImg.Location = new System.Drawing.Point(15, 9);
+            this.BackImg.Name = "BackImg";
+            this.BackImg.Size = new System.Drawing.Size(40, 35);
+            this.BackImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BackImg.TabIndex = 34;
+            this.BackImg.TabStop = false;
+            this.BackImg.Click += new System.EventHandler(this.BackImg_Click);
+            // 
             // EditGpa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::Calculator.Properties.Settings.Default.BgColorSet;
-            this.ClientSize = new System.Drawing.Size(580, 374);
+            this.ClientSize = new System.Drawing.Size(578, 374);
+            this.Controls.Add(this.BackImg);
             this.Controls.Add(this.editGpImg);
             this.Controls.Add(this.removeGpImg);
             this.Controls.Add(this.GradesGridView);
@@ -257,8 +272,10 @@ namespace Calculator.Forms.GPA
             this.Controls.Add(this.GNameLab);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1000, 1000);
+            this.MaximumSize = new System.Drawing.Size(594, 413);
+            this.MinimumSize = new System.Drawing.Size(594, 413);
             this.Name = "EditGpa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditGPA";
             this.Load += new System.EventHandler(this.EditGpa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GradesGridView)).EndInit();
@@ -266,6 +283,7 @@ namespace Calculator.Forms.GPA
             ((System.ComponentModel.ISupportInitialize)(this.removeGpImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeletetImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscardImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BackImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,5 +308,6 @@ namespace Calculator.Forms.GPA
         private System.Windows.Forms.DataGridView GradesGridView;
         private System.Windows.Forms.PictureBox removeGpImg;
         private System.Windows.Forms.PictureBox editGpImg;
+        private System.Windows.Forms.PictureBox BackImg;
     }
 }

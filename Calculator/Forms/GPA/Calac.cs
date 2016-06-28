@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
 using Calculator.Lib;
 using Calculator.Model;
@@ -18,6 +20,7 @@ namespace Calculator.Forms.GPA
         private GpaHelper _gpaHelper;
         private Gpa _gp;
         private string _unitIDlab;
+
         public Calac()
         {
             InitializeComponent();
@@ -31,8 +34,12 @@ namespace Calculator.Forms.GPA
 
         private decimal _gpaSemestar = 0, _totalUnits=0 , _gpabefore;
         #endregion
+
         private void Calac_Load(object sender, EventArgs e)
         {
+            if (Settings.Default.GPA_Id == 0)
+            return;
+            
             _gp = _db.Gpas.FirstOrDefault(item => item.Id == Settings.Default.GPA_Id);
             if (_gp != null)
             {
@@ -49,6 +56,8 @@ namespace Calculator.Forms.GPA
             toolTip1.SetToolTip(btnCalculate , "Calculate GPA");
             toolTip1.SetToolTip(DeletetImg , "Delete Item");
             toolTip1.SetToolTip(DiscardImg, "Discard");
+            toolTip1.SetToolTip(BackImg, "Back");
+            toolTip1.SetToolTip(CalculateTotalbtn, "Calculate Total GPA");
         }
 
         //add Edit item
@@ -147,11 +156,6 @@ namespace Calculator.Forms.GPA
             TotalUnitLab.Text = (Convert.ToDecimal(UnitBeforeLab.Text) + Convert.ToDecimal(UnitSumation.Text)).ToString(CultureInfo.InvariantCulture);
         }
 
-        //private void Changethevalue(object sender, EventArgs e)
-        //{
-        //    UnitSumation.Text = GpaHelper.UnitSumation(_lGpa).ToString(CultureInfo.CurrentCulture);
-        //}
-
         public void EditBtn_Click(object sender , DataGridViewCellEventArgs e)
         {
             var dataGridViewColumn = dataGridView1.Columns["Options"];
@@ -227,7 +231,6 @@ namespace Calculator.Forms.GPA
             Grid.GridColor(dataGridView1);
         }
         
-
         private void UnitbeforeTxT_TextChanged(object sender, EventArgs e)
         {
             UnitbeforeTxT.BackColor = Color.White;
@@ -239,7 +242,20 @@ namespace Calculator.Forms.GPA
             }
             UnitBeforeLab.Text = UnitbeforeTxT.Text;
             TotalUnitLab.Text  = (Convert.ToDecimal(UnitBeforeLab.Text) + Convert.ToDecimal(UnitSumation.Text)).ToString(CultureInfo.InvariantCulture);
+        }
+        
+        private void BackImg_Click(object sender, EventArgs e)
+        {
+          Close();
+        }
 
+        private void Calac_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            for (var i = 0; i < 1; i++)
+            {
+                var welComeType = Application.OpenForms[i];
+                welComeType.Show();
+            }
         }
 
         private void GPA_TxT_TextChanged(object sender, EventArgs e)
@@ -261,7 +277,7 @@ namespace Calculator.Forms.GPA
                 return;
             }
 
-            if (!GpaHelper.CheckStringUnitInput(UnitbeforeTxT, UnitbeforeTxT.Text))
+            if (!GpaHelper.CheckStringUnitInput(UnitbeforeTxT))
             {
                 UnitbeforeTxT.BackColor = Color.Red;
                 UnitBeforeLab.Text = @"0";

@@ -12,6 +12,8 @@ namespace Calculator.Forms
 {
     public partial class Welcome : Form
     {
+        private int _count = 0;
+
         public void Welcome_Load(object sender , EventArgs e)
         {
             Datelab.Text = @"Mn3M Copyright Version 2.0.0 © " + DateTime.Now.Year;
@@ -44,7 +46,8 @@ namespace Calculator.Forms
             toolTip.SetToolTip(facebookimg , "Facebook");
             toolTip.SetToolTip(Githubimg , "Project Source Code (GitHub)");
             // toolTip.SetToolTip(C_GPA, "Calculate Your GPA using Your Subject");
-          
+            timer1.Start();
+            
 
         }
 
@@ -73,14 +76,24 @@ namespace Calculator.Forms
         {
             Hide();
             new Option().ShowDialog();
+            BackColor = Settings.Default.BgColorSet;
             Show();
         }
 
-        private void GPA_Calc_Click(object sender, EventArgs e)
+       private void GPA_Calc_Click(object sender, EventArgs e)
         {
+            if (Settings.Default.GPA_Id == 0)
+            {
+                MessageBox.Show(
+                    @"You Remove You Default GPA Please Select New One As Default To be able to Calculate Your GPA",
+                    @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 return;
+            }
+            PleaseWait.ShowSplashScreen();
+            var mainForm = new Calac(); //this takes ages
+            mainForm.Show();
+            PleaseWait.CloseForm(); 
             Hide();
-            new Calac().ShowDialog();
-            Show();
         }
 
         private void Githubimg_Click(object sender, EventArgs e)
@@ -92,6 +105,7 @@ namespace Calculator.Forms
         {
             Process.Start("https://www.facebook.com/n3n2mohamed");
         }
+
 
         private void fontImg_Click(object sender, EventArgs e)
         {
@@ -113,9 +127,37 @@ namespace Calculator.Forms
             colorDialog.Dispose();
             GpaName.ForeColor = Settings.Default.FBgColorSet;
             Datelab.ForeColor = Settings.Default.FBgColorSet;
+            UserNametxt.ForeColor = Settings.Default.FBgColorSet;
+            GpaCalcLab.ForeColor = Settings.Default.FBgColorSet;
 
         }
 
-       
+        private void Welcome_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+             
+            _count ++;
+            if (_count == 20)
+            {
+                timer1.Stop();
+                LeftArrowImg.Hide();
+                return;
+            }
+
+            if (_count%2 == 0)
+              LeftArrowImg.Location = new Point(LeftArrowImg.Location.X + 2 , 170); 
+            
+
+            if (_count % 2 == 1)
+                LeftArrowImg.Location = new Point(LeftArrowImg.Location.X - 2, 170);
+
+            // _count%2 == 0 ? LeftArrowImg.Location.X += 1 : LeftArrowImg.Location.X -= 1;
+
+
+        }
     }
 }

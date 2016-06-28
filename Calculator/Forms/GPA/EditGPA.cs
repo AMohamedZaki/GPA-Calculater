@@ -6,6 +6,8 @@ using System.Linq;
 using System.Windows.Forms;
 using Calculator.Lib;
 using Calculator.Model;
+using Calculator.Properties;
+
 namespace Calculator.Forms.GPA
 {
     public partial class EditGpa : Form
@@ -16,7 +18,7 @@ namespace Calculator.Forms.GPA
 
         private Gpa _gpaItem;
         private int _selectedGpaValue;
-        private int _gradeId;
+        private int _gradeId , _GpaId;
         public EditGpa()
         {
             InitializeComponent();
@@ -30,11 +32,13 @@ namespace Calculator.Forms.GPA
             toolTip1.SetToolTip(removeGpImg, "Delete Gpa Calculater");
             toolTip1.SetToolTip(DiscardImg, "Discard");
             toolTip1.SetToolTip(DeletetImg, "Delete Degree");
+            toolTip1.SetToolTip(BackImg, "Back");
         }
 
         private void GPAcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (GPAcomboBox.SelectedIndex == 0)
+            DefualtMode();
+            if (GPAcomboBox.SelectedIndex == 0 )
             {
                 DegreeTxT.Enabled = false;
                 ValueTxT.Enabled = false;
@@ -46,6 +50,7 @@ namespace Calculator.Forms.GPA
 
                 return;
             }
+            
             Gpa_NameTXT.Enabled = true;
             removeGpImg.Visible = true;
             removeGpImg.Enabled = true;
@@ -78,11 +83,7 @@ namespace Calculator.Forms.GPA
 
         private void Bind<T>(List<T> grades)
         {
-            var editBtn = new DataGridViewButtonColumn
-            {
-                Name = "",
-                Width = 50
-            };
+            var editBtn = new DataGridViewButtonColumn  {  Width = 50};
 
             GradesGridView.DataSource = grades;
             GradesGridView.Columns.Insert(0, editBtn);
@@ -110,17 +111,15 @@ namespace Calculator.Forms.GPA
 
             var gradeId = Convert.ToDecimal(id);
             var gpadItem = _db.Grades.FirstOrDefault(item => item.Id == gradeId);
-            if (gpadItem != null)
-            {
-                DegreeTxT.Text = gpadItem.Name.ToString(CultureInfo.CurrentCulture);
-                ValueTxT.Text = gpadItem.Value.ToString(CultureInfo.CurrentCulture);
-                _gradeId = gpadItem.Id;
-            }
+            if (gpadItem == null) return;
 
+            DegreeTxT.Text = gpadItem.Name.ToString(CultureInfo.CurrentCulture);
+            ValueTxT.Text = gpadItem.Value.ToString(CultureInfo.CurrentCulture);
+            _gradeId = gpadItem.Id;
+            _GpaId = gpadItem.GpaId;
             GpaHelper.ConvertButton(Addbtn, true, toolTip1);
             DiscardImg.Visible = true;
             DeletetImg.Visible = true;
-
         }
 
         private void Addbtn_Click(object sender, EventArgs e)
@@ -130,11 +129,11 @@ namespace Calculator.Forms.GPA
                 if (!GpaHelper.CheckStringUnitInput(Addbtn, ValueTxT.Text, DegreeTxT.Text)) return;
                 Grade data;
                 var val = Convert.ToDecimal(ValueTxT.Text);
-
-                #region if
+                 
+                #region if Edit
                 if (Addbtn.Text == @"Edit")
                 {
-                    var check = _db.Grades.Where(item => item.Id != _gradeId).ToList().Any(item1 => item1.Name == DegreeTxT.Text || item1.Value == val);
+                    var check = _db.Grades.Where(item => item.Id != _gradeId && item.GpaId == _GpaId).ToList().Any(item1 => item1.Name == DegreeTxT.Text || item1.Value == val);
                     if (check)
                     {
                         MessageBox.Show(@"Please Make Sure That Degree Or Value Not Repeated !",
@@ -147,19 +146,16 @@ namespace Calculator.Forms.GPA
                         data.Name = DegreeTxT.Text;
                         data.Value = Convert.ToDecimal(ValueTxT.Text);
                     }
-                    DeletetImg.Visible = false;
-                    DiscardImg.Visible = false;
-                    GpaHelper.ConvertButton(Addbtn, false, toolTip1);
                 }
                 #endregion
+
                 #region else
                 else
                 {
-                    var check = _db.Grades.FirstOrDefault(item => item.Name == DegreeTxT.Text || item.Value == val);
+                    var check = _db.Grades.FirstOrDefault(item => (item.Name == DegreeTxT.Text || item.Value == val) && item.GpaId == _GpaId);
                     if (check != null)
                     {
-                        MessageBox.Show(@"Please Make Sure That Degree Or Value Not Repeated !",
-                            @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(@"Please Make Sure That Degree Or Value Not Repeated !", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     data = new Grade
@@ -174,9 +170,9 @@ namespace Calculator.Forms.GPA
                 _db.SaveChanges();
                 var dataGrid = _db.Grades.Where(item => item.GpaId == _selectedGpaValue).OrderByDescending(item => item.Value).ToList();
                 Bind(dataGrid);
-                DegreeTxT.Text = "";
-                ValueTxT.Text = "";
+                DefualtMode();
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show($"An Error Occured the Application Will Close {Environment.CommandLine}" + ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -219,18 +215,31 @@ namespace Calculator.Forms.GPA
 
         private void removeGpImg_Click(object sender, EventArgs e)
         {
-            var reuslt = MessageBox.Show(@"Are You Sure You Want To Remove This Calculater ?", @"Are You Sure You Want To Remove This Calculater ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+           var reuslt = MessageBox.Show(@"Are You Sure You Want To Remove This Calculater ?", @"Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (reuslt == DialogResult.No)
                 return;
 
-            // var data = _db.Gpas.FirstOrDefault(item => item.Id == _selectedGpaValue);
+            if (Settings.Default.GPA_Id == Convert.ToInt32(GPAcomboBox.SelectedValue))
+            {
+                var reuslt2 = MessageBox.Show(@"You Will Delete The GPA That You Are Used in your Application ? " +
+                                              $"{Environment.NewLine}in this Case: You not be able to Calculate Your GPA unless you set new GPA as Default ", @"Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (reuslt2 == DialogResult.No)
+                    return;
+
+                Settings.Default.GPA_Id = 0;
+                Settings.Default.Save();
+            }
+
+            GradesGridView.DataSource = "";
             _db.Gpas.Remove(_db.Gpas.FirstOrDefault(item => item.Id == _selectedGpaValue));
             _db.Grades.RemoveRange(_db.Grades.Where(item => item.GpaId == _selectedGpaValue));
             _db.SaveChanges();
             DropDawnBind();
             Gpa_NameTXT.Text = "";
-            GradesGridView.DataSource = new BindingSource { DataSource = null };
+            DeletetImg.Visible = false;
+            editGpImg.Visible = false;
         }
 
         private void DropDawnBind()
@@ -264,5 +273,20 @@ namespace Calculator.Forms.GPA
 
             editGpImg.Visible = true;
         }
+
+        private void BackImg_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void DefualtMode()
+        {
+            DegreeTxT.Text = "";
+            ValueTxT.Text = "";
+            DeletetImg.Visible = false;
+            DiscardImg.Visible = false;
+            GpaHelper.ConvertButton(Addbtn, false, toolTip1);
+        }
+
     }
 }

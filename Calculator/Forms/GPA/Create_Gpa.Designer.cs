@@ -47,9 +47,11 @@ namespace Calculator.Forms.GPA
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.DoneMessageLab = new System.Windows.Forms.Label();
+            this.BackImg = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DegreedataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BackImg)).BeginInit();
             this.SuspendLayout();
             // 
             // DegreedataGridView
@@ -117,6 +119,7 @@ namespace Calculator.Forms.GPA
             // Savebtn
             // 
             this.Savebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(166)))), ((int)(((byte)(255)))));
+            this.Savebtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Savebtn.Location = new System.Drawing.Point(97, 306);
             this.Savebtn.Name = "Savebtn";
             this.Savebtn.Size = new System.Drawing.Size(73, 33);
@@ -128,6 +131,7 @@ namespace Calculator.Forms.GPA
             // Checkbtn
             // 
             this.Checkbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(193)))), ((int)(((byte)(0)))));
+            this.Checkbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Checkbtn.Location = new System.Drawing.Point(179, 306);
             this.Checkbtn.Name = "Checkbtn";
             this.Checkbtn.Size = new System.Drawing.Size(65, 33);
@@ -177,12 +181,25 @@ namespace Calculator.Forms.GPA
             this.DoneMessageLab.TabIndex = 19;
             this.DoneMessageLab.Text = "Done your GPA has been Created \r\n";
             // 
+            // BackImg
+            // 
+            this.BackImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackImg.Image = global::Calculator.Properties.Resources.Exit;
+            this.BackImg.Location = new System.Drawing.Point(12, 9);
+            this.BackImg.Name = "BackImg";
+            this.BackImg.Size = new System.Drawing.Size(40, 35);
+            this.BackImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BackImg.TabIndex = 20;
+            this.BackImg.TabStop = false;
+            this.BackImg.Click += new System.EventHandler(this.BackImg_Click);
+            // 
             // CreateGpa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::Calculator.Properties.Settings.Default.BgColorSet;
             this.ClientSize = new System.Drawing.Size(447, 445);
+            this.Controls.Add(this.BackImg);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GPAIdlab);
             this.Controls.Add(this.Checkbtn);
@@ -195,12 +212,14 @@ namespace Calculator.Forms.GPA
             this.MaximumSize = new System.Drawing.Size(463, 484);
             this.MinimumSize = new System.Drawing.Size(463, 484);
             this.Name = "CreateGpa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create_Gpa";
             this.Load += new System.EventHandler(this.Create_Gpa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DegreedataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BackImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,5 +240,6 @@ namespace Calculator.Forms.GPA
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label DoneMessageLab;
+        private System.Windows.Forms.PictureBox BackImg;
     }
 }

@@ -24,6 +24,7 @@ namespace Calculator.Forms.GPA
         {
             toolTip1.SetToolTip(Checkbtn, "Check The Table of Degrees and the Values");
             toolTip1.SetToolTip(Savebtn, "Save The Data");
+            toolTip1.SetToolTip(BackImg, "Back");
         }
 
         private void DegreedataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -197,6 +198,11 @@ namespace Calculator.Forms.GPA
             }
             #endregion
 
+        }
+
+        private void BackImg_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

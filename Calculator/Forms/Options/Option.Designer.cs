@@ -33,9 +33,13 @@ namespace Calculator.Forms.Options
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Option));
             this.settinglab = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.Restorebtn = new System.Windows.Forms.Button();
+            this.RBGColorLab = new System.Windows.Forms.Label();
+            this.line4 = new System.Windows.Forms.Label();
             this.RemoveImg = new System.Windows.Forms.PictureBox();
             this.DoneImg = new System.Windows.Forms.PictureBox();
             this.line3 = new System.Windows.Forms.Label();
@@ -47,9 +51,12 @@ namespace Calculator.Forms.Options
             this.gpacalcLab = new System.Windows.Forms.Label();
             this.CreagpaclacLab = new System.Windows.Forms.Label();
             this.GBAbtn = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.BackImg = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RemoveImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DoneImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BackImg)).BeginInit();
             this.SuspendLayout();
             // 
             // settinglab
@@ -57,7 +64,7 @@ namespace Calculator.Forms.Options
             this.settinglab.AutoSize = true;
             this.settinglab.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settinglab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
-            this.settinglab.Location = new System.Drawing.Point(26, 9);
+            this.settinglab.Location = new System.Drawing.Point(184, 13);
             this.settinglab.Name = "settinglab";
             this.settinglab.Size = new System.Drawing.Size(64, 22);
             this.settinglab.TabIndex = 25;
@@ -66,6 +73,9 @@ namespace Calculator.Forms.Options
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.Restorebtn);
+            this.panel3.Controls.Add(this.RBGColorLab);
+            this.panel3.Controls.Add(this.line4);
             this.panel3.Controls.Add(this.RemoveImg);
             this.panel3.Controls.Add(this.DoneImg);
             this.panel3.Controls.Add(this.line3);
@@ -77,14 +87,47 @@ namespace Calculator.Forms.Options
             this.panel3.Controls.Add(this.gpacalcLab);
             this.panel3.Controls.Add(this.CreagpaclacLab);
             this.panel3.Controls.Add(this.GBAbtn);
-            this.panel3.Location = new System.Drawing.Point(22, 45);
+            this.panel3.Location = new System.Drawing.Point(13, 65);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(442, 196);
+            this.panel3.Size = new System.Drawing.Size(453, 257);
             this.panel3.TabIndex = 24;
+            // 
+            // Restorebtn
+            // 
+            this.Restorebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(166)))), ((int)(((byte)(255)))));
+            this.Restorebtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Restorebtn.Location = new System.Drawing.Point(224, 196);
+            this.Restorebtn.Name = "Restorebtn";
+            this.Restorebtn.Size = new System.Drawing.Size(73, 34);
+            this.Restorebtn.TabIndex = 29;
+            this.Restorebtn.Text = "Restore";
+            this.Restorebtn.UseVisualStyleBackColor = false;
+            this.Restorebtn.Click += new System.EventHandler(this.Restorebtn_Click);
+            // 
+            // RBGColorLab
+            // 
+            this.RBGColorLab.AutoSize = true;
+            this.RBGColorLab.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RBGColorLab.ForeColor = global::Calculator.Properties.Settings.Default.FBgColorSet;
+            this.RBGColorLab.Location = new System.Drawing.Point(3, 206);
+            this.RBGColorLab.Name = "RBGColorLab";
+            this.RBGColorLab.Size = new System.Drawing.Size(128, 17);
+            this.RBGColorLab.TabIndex = 28;
+            this.RBGColorLab.Text = " Background Color ";
+            // 
+            // line4
+            // 
+            this.line4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.line4.ForeColor = System.Drawing.Color.Red;
+            this.line4.Location = new System.Drawing.Point(-63, 183);
+            this.line4.Name = "line4";
+            this.line4.Size = new System.Drawing.Size(565, 2);
+            this.line4.TabIndex = 27;
+            this.line4.Text = "Line4";
             // 
             // RemoveImg
             // 
-            this.RemoveImg.Image = global::Calculator.Properties.Resources.matticonssoftwareinstallerpurge1;
+            this.RemoveImg.Image = ((System.Drawing.Image)(resources.GetObject("RemoveImg.Image")));
             this.RemoveImg.Location = new System.Drawing.Point(379, 138);
             this.RemoveImg.Name = "RemoveImg";
             this.RemoveImg.Size = new System.Drawing.Size(35, 31);
@@ -109,7 +152,7 @@ namespace Calculator.Forms.Options
             this.line3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.line3.Location = new System.Drawing.Point(189, 0);
             this.line3.Name = "line3";
-            this.line3.Size = new System.Drawing.Size(2, 196);
+            this.line3.Size = new System.Drawing.Size(2, 300);
             this.line3.TabIndex = 24;
             this.line3.Text = "label1";
             // 
@@ -199,24 +242,39 @@ namespace Calculator.Forms.Options
             this.GBAbtn.UseVisualStyleBackColor = false;
             this.GBAbtn.Click += new System.EventHandler(this.GBAbtn_Click_1);
             // 
+            // BackImg
+            // 
+            this.BackImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackImg.Image = global::Calculator.Properties.Resources.Exit;
+            this.BackImg.Location = new System.Drawing.Point(12, 9);
+            this.BackImg.Name = "BackImg";
+            this.BackImg.Size = new System.Drawing.Size(40, 35);
+            this.BackImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BackImg.TabIndex = 26;
+            this.BackImg.TabStop = false;
+            this.BackImg.Click += new System.EventHandler(this.BackImg_Click);
+            // 
             // Option
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::Calculator.Properties.Settings.Default.BgColorSet;
-            this.ClientSize = new System.Drawing.Size(486, 275);
+            this.ClientSize = new System.Drawing.Size(486, 450);
+            this.Controls.Add(this.BackImg);
             this.Controls.Add(this.settinglab);
             this.Controls.Add(this.panel3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(502, 314);
-            this.MinimumSize = new System.Drawing.Size(502, 314);
+            this.MaximumSize = new System.Drawing.Size(502, 489);
+            this.MinimumSize = new System.Drawing.Size(502, 489);
             this.Name = "Option";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Option";
             this.Load += new System.EventHandler(this.Option_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RemoveImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DoneImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BackImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,5 +294,10 @@ namespace Calculator.Forms.Options
         private Label line3;
         private PictureBox DoneImg;
         private PictureBox RemoveImg;
+        private PictureBox BackImg;
+        private ToolTip toolTip1;
+        private Label line4;
+        private Button Restorebtn;
+        private Label RBGColorLab;
     }
 }

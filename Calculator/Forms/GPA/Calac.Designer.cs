@@ -45,8 +45,6 @@ namespace Calculator.Forms.GPA
             this.GpaNameLab = new System.Windows.Forms.Label();
             this.UnitTBox = new System.Windows.Forms.TextBox();
             this.LabNumberofUnit = new System.Windows.Forms.Label();
-            this.DeletetImg = new System.Windows.Forms.PictureBox();
-            this.DiscardImg = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CalculateTotalbtn = new System.Windows.Forms.Button();
             this.UnitbeforeTxT = new System.Windows.Forms.TextBox();
@@ -70,11 +68,15 @@ namespace Calculator.Forms.GPA
             this.line2 = new System.Windows.Forms.Label();
             this.line1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.BackImg = new System.Windows.Forms.PictureBox();
+            this.DeletetImg = new System.Windows.Forms.PictureBox();
+            this.DiscardImg = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeletetImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiscardImg)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BackImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeletetImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscardImg)).BeginInit();
             this.SuspendLayout();
             // 
             // labDegree
@@ -179,32 +181,6 @@ namespace Calculator.Forms.GPA
             this.LabNumberofUnit.Size = new System.Drawing.Size(123, 19);
             this.LabNumberofUnit.TabIndex = 1;
             this.LabNumberofUnit.Text = "Number of Unit\'s";
-            // 
-            // DeletetImg
-            // 
-            this.DeletetImg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DeletetImg.Image = global::Calculator.Properties.Resources.metro_icon;
-            this.DeletetImg.Location = new System.Drawing.Point(319, 133);
-            this.DeletetImg.Name = "DeletetImg";
-            this.DeletetImg.Size = new System.Drawing.Size(23, 23);
-            this.DeletetImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.DeletetImg.TabIndex = 15;
-            this.DeletetImg.TabStop = false;
-            this.DeletetImg.Visible = false;
-            this.DeletetImg.Click += new System.EventHandler(this.DeletetImg_Click);
-            // 
-            // DiscardImg
-            // 
-            this.DiscardImg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DiscardImg.Image = global::Calculator.Properties.Resources.matticonssoftwareinstallerpurge1;
-            this.DiscardImg.Location = new System.Drawing.Point(284, 133);
-            this.DiscardImg.Name = "DiscardImg";
-            this.DiscardImg.Size = new System.Drawing.Size(23, 23);
-            this.DiscardImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.DiscardImg.TabIndex = 14;
-            this.DiscardImg.TabStop = false;
-            this.DiscardImg.Visible = false;
-            this.DiscardImg.Click += new System.EventHandler(this.DiscardImg_Click);
             // 
             // panel1
             // 
@@ -457,12 +433,51 @@ namespace Calculator.Forms.GPA
             this.label7.TabIndex = 18;
             this.label7.Text = "Uints";
             // 
+            // BackImg
+            // 
+            this.BackImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackImg.Image = global::Calculator.Properties.Resources.Exit;
+            this.BackImg.Location = new System.Drawing.Point(10, 12);
+            this.BackImg.Name = "BackImg";
+            this.BackImg.Size = new System.Drawing.Size(40, 35);
+            this.BackImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BackImg.TabIndex = 26;
+            this.BackImg.TabStop = false;
+            this.BackImg.Click += new System.EventHandler(this.BackImg_Click);
+            // 
+            // DeletetImg
+            // 
+            this.DeletetImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeletetImg.Image = ((System.Drawing.Image)(resources.GetObject("DeletetImg.Image")));
+            this.DeletetImg.Location = new System.Drawing.Point(319, 133);
+            this.DeletetImg.Name = "DeletetImg";
+            this.DeletetImg.Size = new System.Drawing.Size(23, 23);
+            this.DeletetImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DeletetImg.TabIndex = 15;
+            this.DeletetImg.TabStop = false;
+            this.DeletetImg.Visible = false;
+            this.DeletetImg.Click += new System.EventHandler(this.DeletetImg_Click);
+            // 
+            // DiscardImg
+            // 
+            this.DiscardImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DiscardImg.Image = ((System.Drawing.Image)(resources.GetObject("DiscardImg.Image")));
+            this.DiscardImg.Location = new System.Drawing.Point(284, 133);
+            this.DiscardImg.Name = "DiscardImg";
+            this.DiscardImg.Size = new System.Drawing.Size(23, 23);
+            this.DiscardImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DiscardImg.TabIndex = 14;
+            this.DiscardImg.TabStop = false;
+            this.DiscardImg.Visible = false;
+            this.DiscardImg.Click += new System.EventHandler(this.DiscardImg_Click);
+            // 
             // Calac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::Calculator.Properties.Settings.Default.BgColorSet;
             this.ClientSize = new System.Drawing.Size(613, 632);
+            this.Controls.Add(this.BackImg);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GpaNameLab);
@@ -476,18 +491,21 @@ namespace Calculator.Forms.GPA
             this.Controls.Add(this.LabNumberofUnit);
             this.Controls.Add(this.labDegree);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1000, 1000);
-            this.MinimumSize = new System.Drawing.Size(558, 511);
+            this.MaximumSize = new System.Drawing.Size(629, 671);
+            this.MinimumSize = new System.Drawing.Size(629, 671);
             this.Name = "Calac";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calc";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Calac_FormClosed);
             this.Load += new System.EventHandler(this.Calac_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeletetImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiscardImg)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BackImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeletetImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscardImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -529,6 +547,7 @@ namespace Calculator.Forms.GPA
         private Label TotalUnitLab;
         private Label GPAbeforLab;
         private Label UnitBeforeLab;
+        private PictureBox BackImg;
     }
 }
 

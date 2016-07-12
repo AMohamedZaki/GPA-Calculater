@@ -134,14 +134,7 @@ namespace Calculator.Forms.GPA
             Savebtn.Enabled = true;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-           // new Sgpa().Show();
-            this.Close();
-        }
-
-
+       
         public void CheckData()
         {
             Dirtychecked = false;
